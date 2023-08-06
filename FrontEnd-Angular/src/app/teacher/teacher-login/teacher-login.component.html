@@ -1,0 +1,35 @@
+<div class="container" *ngIf="outlet.isActivated === false">
+    <h3 class="heading">Teacher Login</h3>
+    <form class="row g-3" [formGroup]="teacherForm">
+        <div class="col-md-12">
+            <label for="teacherId">Teacher Id*</label>
+            <input type="text" class="form-control" name="email" formControlName="teacherId">
+            <div *ngIf="teacherId?.invalid && (teacherId?.dirty || teacherId?.touched)" class="error">
+                <div *ngIf="teacherId?.errors?.['required']">
+                    Teacher ID is required.
+                </div>
+                <div *ngIf="teacherId?.errors?.['minlength']">
+                    Teacher ID must be atleast 5 characters long.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label for="password" class="col-sm-1 col-form-label">Password*</label>
+            <input type="password" class="form-control" name="password" formControlName="password">
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="error">
+                <div *ngIf="password?.errors?.['required']">
+                    Password is required.
+                </div>
+                <div *ngIf="password?.errors?.['minlength']">
+                    Password must be atleast 6 characters long.
+                </div>
+            </div>
+            <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+        </div>
+        <div class="col-md-12 actions">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="teacherForm.invalid">Login</button>
+            <button type="reset" class="btn btn-danger">Clear</button>
+        </div>
+    </form>
+</div>
+<router-outlet #outlet="outlet"></router-outlet>

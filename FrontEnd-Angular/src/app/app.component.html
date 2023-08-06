@@ -1,0 +1,9 @@
+<div class="container-1">
+  <app-header></app-header>
+  <div class="hero-1" *ngIf="outlet.isActivated === false">
+    <button routerLink="teacher" class="btn btn-primary btn-teacher">Teacher</button>
+    <button routerLink="student" class="btn btn-primary btn-student">Student</button>
+  </div>
+  <router-outlet #outlet="outlet"></router-outlet>
+  <app-footer class="footer"></app-footer>
+</div>

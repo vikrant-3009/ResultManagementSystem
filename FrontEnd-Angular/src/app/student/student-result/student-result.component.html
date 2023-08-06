@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 class="heading">Result</h3>
+    <form class="row g-3" [formGroup]="studentForm">
+        <div class="col-md-12">
+            <label class="label" for="roll_no">Roll No</label>
+            <input type="text" name="roll_no" class="form-control" formControlName="roll_no" readonly>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="name">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name" readonly>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" formControlName="dob" readonly>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="score">Score</label>
+            <input type="text" name="score" class="form-control" formControlName="score" readonly>
+        </div>
+    </form>
+</div>

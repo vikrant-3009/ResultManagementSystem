@@ -1,0 +1,15 @@
+.container {
+    margin: 3% auto;
+}
+
+.heading {
+    text-align: center;
+}
+
+.row {
+    padding: 0.5% 30%;
+}
+
+.label {
+    font-weight: 500;
+}

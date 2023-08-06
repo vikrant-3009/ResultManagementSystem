@@ -1,0 +1,31 @@
+<div class="container" *ngIf="outlet.isActivated === false">
+    <h3 class="heading">Find Result</h3>
+    <form class="row g-3" [formGroup]="studentLoginForm">
+        <div class="col-md-12">
+            <label for="roll_no">Roll No.</label>
+            <input type="text" name="roll_no" class="form-control" formControlName="roll_no">
+            <div *ngIf="roll_no?.invalid && (roll_no?.dirty || roll_no?.touched)" class="error">
+                <div *ngIf="roll_no?.errors?.['required']">
+                    Roll No is required.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label for="name">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name">
+            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error">
+                <div *ngIf="name?.errors?.['required']">
+                    Name is required.
+                </div>
+            </div>
+            <div *ngIf="errorMessage" class="error">
+                {{ errorMessage }}
+            </div>
+        </div>
+        <div class="col-md-12 actions">
+            <button type="submit" (click)="onLogin()" [disabled]="studentLoginForm.invalid" class="btn btn-primary">Search</button>
+            <button type="reset" class="btn btn-danger">Clear</button>
+        </div>
+    </form>
+</div>
+<router-outlet #outlet="outlet"></router-outlet>

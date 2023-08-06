@@ -1,0 +1,20 @@
+.container-1 {
+    min-height: 100%;
+    position: relative;
+}
+
+.hero-1 {
+    padding: 10% 2%;
+    text-align: center;
+}
+
+.btn {
+    margin: 0 2%;
+    padding: 1.5% 3%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}

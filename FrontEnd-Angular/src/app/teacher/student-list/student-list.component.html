@@ -1,0 +1,51 @@
+<h6 class="caption">Total {{ totalStudents }} students</h6>
+<table class="table table-striped table-light table-bordered">
+  <thead>
+    <tr>
+      <th class="col-2 th" (click)="onSort()">Roll No.</th>
+      <th class="col-3 th">Name</th>
+      <th class="col-2 th">Date of Birth</th>
+      <th class="col-2 th">Score</th>
+      <th class="col-3 th">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <tr *ngFor="let student of students | paginate : {
+        itemsPerPage: pageSize,
+        currentPage: page,
+        totalItems: totalStudents
+    }">
+        <td>{{ student.roll_no }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.dob | date: "dd-MM-yyyy" }}</td>
+        <td>{{ student.score }}</td>
+        <td>
+            <a class="edit-a btn-1" (click)="edit(student.roll_no)">
+              <img class="edit"
+                src="../../../assets/images/pencil.png" alt="edit"/>
+            </a>
+            <a class="delete-a btn-1" (click)="delete(student.roll_no)">
+              <img class="delete"
+                src="../../../assets/images/trash.png" alt="delete"/>
+            </a>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="p-f">
+    <div>
+        <pagination-controls
+            [responsive]="true" 
+            (pageChange)="handlePageChange($event)">
+        </pagination-controls>
+    </div>
+    <div class="dropdown">
+        Items Per Page:
+        <select (change)="handlePageSizeChange($event)">
+            <option *ngFor="let size of pageSizes" [value]="size">
+                {{ size }}
+            </option>
+        </select>
+    </div>
+</div>

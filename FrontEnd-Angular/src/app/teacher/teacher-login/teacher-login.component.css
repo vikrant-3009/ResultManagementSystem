@@ -1,0 +1,24 @@
+.container {
+    margin: 3% 0;
+}
+
+.heading {
+    text-align: center;
+}
+
+.row {
+    padding: 3% 30%;
+}
+
+.actions {
+    padding: 2.5% 1.5%;
+}
+
+.btn {
+    margin-right: 2.5%;
+    padding: 1.5% 4%;
+}
+
+.error {
+    color: red;
+}

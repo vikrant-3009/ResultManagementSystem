@@ -1,0 +1,43 @@
+<div class="container">
+    <h3 class="heading">Edit Student</h3>
+    <form [formGroup]="editStudentForm" class="row g-3">
+        <div class="col-md-12">
+            <label class="label" for="roll_no">Roll No</label>
+            <input type="text" name="roll_no" class="form-control" formControlName="roll_no" readonly>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="name">Name</label>
+            <input type="text" name="name" class="form-control" formControlName="name">
+            <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error">
+                <div *ngIf="name?.errors?.['required']">Name is required</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="dob">Date of Birth</label>
+            <input type="date" name="dob" class="form-control" formControlName="dob">
+            <div *ngIf="dob?.invalid && (dob?.dirty || dob?.touched)" class="error">
+                <div *ngIf="dob?.errors?.['required']">Date of Birth is required</div>
+                <div *ngIf="dob?.errors?.['invalidDob']">Invalid Date of Birth</div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label class="label" for="score">Score</label>
+            <input type="text" name="score" class="form-control" formControlName="score">
+            <div *ngIf="score?.invalid && (score?.dirty || score?.touched)" class="error">
+                <div *ngIf="score?.errors?.['required']">
+                    Score is required.
+                </div>
+                <div *ngIf="score?.errors?.['min']">
+                    Score must be grater than or equal to 0.
+                </div>
+                <div *ngIf="score?.errors?.['max']">
+                    Score must be less than or equal to 100.
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 actions">
+            <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="editStudentForm.invalid">Submit</button>
+            <button type="reset" class="btn btn-danger">Reset</button>
+        </div>
+    </form>
+</div>

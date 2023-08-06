@@ -1,0 +1,56 @@
+<div class="container-1">
+    <div class="hero-1">
+        <form [formGroup]="addStudentForm">
+            <div class="row-new">
+                <label for="roll_no" class="col-form-label">Roll No.</label>
+                <input type="text" name="roll_no" class="form-control" formControlName="roll_no">
+                <div *ngIf="roll_no?.invalid && (roll_no?.dirty || roll_no?.touched)" class="error">
+                    <div *ngIf="roll_no?.errors?.['required']">
+                        Roll No. is required.
+                    </div>
+                </div>
+                <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+            </div>
+            <div class="row-new">
+                <label for="name" class="col-form-label">Name</label>
+                <input type="text" name="name" class="form-control" formControlName="name">
+                <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="error">
+                    <div *ngIf="name?.errors?.['required']">
+                        Name is required.
+                    </div>
+                </div>
+            </div>
+            <div class="row-new">
+                <label for="dob" class="col-form-label">Date of Birth</label>
+                <input type="date" name="dob" class="form-control" formControlName="dob">
+                <div *ngIf="dob?.invalid && (dob?.dirty || dob?.touched)" class="error">
+                    <div *ngIf="dob?.errors?.['required']">
+                        Date of Birth is required.
+                    </div>
+                    <div *ngIf="dob?.errors?.['invalidDob']">
+                        Date of Birth is invalid.
+                    </div>
+                </div>
+            </div>
+            <div class="row-new">
+                <label for="score" class="col-form-label">Score</label>
+                <input type="number" name="score" class="form-control" formControlName="score">
+                <div *ngIf="score?.invalid && (score?.dirty || score?.touched)" class="error">
+                    <div *ngIf="score?.errors?.['required']">
+                        Score is required.
+                    </div>
+                    <div *ngIf="score?.errors?.['min']">
+                        Score must be grater than or equal to 0.
+                    </div>
+                    <div *ngIf="score?.errors?.['max']">
+                        Score must be less than or equal to 100.
+                    </div>
+                </div>
+            </div>
+            <div class="row-new actions">
+                <button type="submit" class="btn btn-primary" (click)="onSubmit()" [disabled]="addStudentForm.invalid">Submit</button>
+                <button type="reset" class="btn btn-danger">Reset</button>
+            </div>
+        </form>
+    </div>
+</div>

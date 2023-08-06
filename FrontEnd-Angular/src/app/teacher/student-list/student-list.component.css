@@ -1,0 +1,34 @@
+.table {
+    margin-top: 2%;
+}
+
+.fa-icon {
+    color: #969aa2;
+    float: right;
+}
+
+.btn-1 {
+    margin-left: 12%;
+}
+
+.edit-a {
+    cursor: pointer;
+}
+
+.edit {
+    width: 8%;
+}
+
+.delete-a {
+    cursor: pointer;
+}
+
+.delete {
+    width: 8%;
+}
+
+.p-f {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1%;
+}

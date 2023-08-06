@@ -1,0 +1,9 @@
+<div class="container-1" *ngIf="outlet.isActivated === false">
+    <div class="hero-1">
+        <button (click)="addStudent()" class="btn btn-primary">Add Record</button>
+    </div>
+    <div class="hero-2">
+        <app-student-list></app-student-list>
+    </div>
+</div>
+<router-outlet #outlet="outlet"></router-outlet>
