@@ -1,6 +1,7 @@
 <div class="container-1">
   <app-header></app-header>
   <div class="hero-1" *ngIf="outlet.isActivated === false">
+    <h3 class="heading">Login As</h3>
     <button routerLink="teacher" class="btn btn-primary btn-teacher">Teacher</button>
     <button routerLink="student" class="btn btn-primary btn-student">Student</button>
   </div>

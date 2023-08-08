@@ -18,6 +18,7 @@ public class ResultManagementSystemApplication implements CommandLineRunner {
 		SpringApplication.run(ResultManagementSystemApplication.class, args);
 	}
 	
+	/* Adding two teacher object to dB, when a new table is created */
 	@Override
 	public void run(String... args) throws Exception {
 		Teacher teacher1 = new Teacher("fc101", "abc@123");

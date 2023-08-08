@@ -2,10 +2,22 @@
 <table class="table table-striped table-light table-bordered">
   <thead>
     <tr>
-      <th class="col-2 th" (click)="onSort()">Roll No.</th>
-      <th class="col-3 th">Name</th>
-      <th class="col-2 th">Date of Birth</th>
-      <th class="col-2 th">Score</th>
+      <th class="col-2 th" data-name="roll_no" [appSort]="students" data-order="desc" (click)="onSort($event)"> Roll No. 
+        <span class="arrow-up"></span> 
+        <span class="arrow-down"></span>
+      </th>
+      <th class="col-3 th" data-name="name" [appSort]="students" data-order="desc" (click)="onSort($event)"> Name
+        <span class="arrow-up"></span> 
+        <span class="arrow-down"></span>
+      </th>
+      <th class="col-3 th" data-name="dob" [appSort]="students" data-order="desc" (click)="onSort($event)" data-type="date"> Date of Birth
+        <span class="arrow-up"></span> 
+        <span class="arrow-down"></span>
+      </th>
+      <th class="col-2 th" data-name="score" [appSort]="students" data-order="desc" (click)="onSort($event)"> Score
+        <span class="arrow-up"></span> 
+        <span class="arrow-down"></span>
+      </th>
       <th class="col-3 th">Actions</th>
     </tr>
   </thead>

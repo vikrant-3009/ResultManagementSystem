@@ -12,17 +12,26 @@ import com.practice.entity.Student;
 import com.practice.repository.StudentRepository;
 import com.practice.service.StudentService;
 
+/**
+ * 
+ * @author vikrantkatoch
+ *
+ * Service implementation for student service interface
+ * Handles business logic for student data
+ */
 @Service
 public class StudentServiceImpl implements StudentService {
 	
 	@Autowired
 	private StudentRepository studentRepository;
-
+	
+	/* Returns a page (i.e., sublist of a list) of student objects */
 	@Override
 	public Page<Student> getAllStudents(Pageable paging) {
 		return studentRepository.findAll(paging);
 	}
 
+	/* Returns boolean response, after authenticating the provided student DTO object */
 	@Override
 	public boolean authenticateStudent(StudentDTO studentDto) {
 		Optional<Student> studentObj = studentRepository.findById(studentDto.getRoll_no());
@@ -32,13 +41,15 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return false;
 	}
-
+	
+	/* Returns a student object or null, based on the provided roll_no */
 	@Override
 	public Student getStudent(String roll_no) {
 		Optional<Student> student = studentRepository.findById(roll_no);
 		return student.isPresent() ? student.get() : null;
 	}
 	
+	/* Add a new student to the database, if the roll_no is not in dB */
 	@Override
 	public boolean addNewStudent(Student student) {
 		Optional<Student> studentObj = studentRepository.findById(student.getRoll_no());
@@ -50,6 +61,7 @@ public class StudentServiceImpl implements StudentService {
 		return true;
 	}
 
+	/* Edit/Update an already existing student with new details */
 	@Override
 	public Student editStudent(String roll_no, Student student_new) {
 		Optional<Student> student = studentRepository.findById(roll_no);
@@ -60,6 +72,7 @@ public class StudentServiceImpl implements StudentService {
 		return null;
 	}
 	
+	/* Deletes a student from the dB */
 	@Override
 	public String deleteStudent(String roll_no) {
 		Optional<Student> student = studentRepository.findById(roll_no);

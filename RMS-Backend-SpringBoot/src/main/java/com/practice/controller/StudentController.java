@@ -21,6 +21,12 @@ import com.practice.dto.StudentDTO;
 import com.practice.entity.Student;
 import com.practice.service.StudentService;
 
+/**
+ * 
+ * @author vikrantkatoch
+ * 
+ * Controller for handling Student requests
+ */
 @RestController
 @RequestMapping("/api/students")
 @CrossOrigin("http://localhost:4200/")
@@ -29,14 +35,15 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 	
+	/* Request for getting paginated students list, based on the provided query parameters */
 	@GetMapping
 	public Page<Student> getAllStudents(@RequestParam(name = "page", defaultValue = "0") int page,
 										@RequestParam(name = "size", defaultValue = "3") int size) {
 		Pageable paging = PageRequest.of(page, size);
-		System.out.println(paging);
 		return studentService.getAllStudents(paging);
 	}
 	
+	/* Request for authenticating a student, from the provided student DTO object */
 	@PostMapping("/authenticate")
 	public ResponseEntity<String> authenticateStudent(@RequestBody StudentDTO studentDto) {
 		boolean isCorrectCredentials = studentService.authenticateStudent(studentDto);
@@ -45,6 +52,7 @@ public class StudentController {
 					ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Incorrect Credentials.");
 	}
 	
+	/* Request for getting a student from the provided roll_no */
 	@GetMapping("/{roll_no}")
 	public ResponseEntity<?> getStudent(@PathVariable String roll_no) {
 		Student student = studentService.getStudent(roll_no);
@@ -53,6 +61,7 @@ public class StudentController {
 					ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student not found");
 	}
 	
+	/* Request for adding a new student to the dB */
 	@PostMapping
 	public ResponseEntity<String> addNewStudent(@RequestBody Student student) {
 		boolean isStudentAdded = studentService.addNewStudent(student);
@@ -61,6 +70,7 @@ public class StudentController {
 					ResponseEntity.status(HttpStatus.CONFLICT).body("Roll No is already present.");
 	}
 	
+	/* Request for editing/updating an already existing student in dB */
 	@PutMapping("/edit/{roll_no}")
 	public ResponseEntity<String> editStudent(@PathVariable String roll_no, @RequestBody Student student) {
 		return (studentService.editStudent(roll_no, student) != null) ? 
@@ -68,6 +78,7 @@ public class StudentController {
 					ResponseEntity.status(HttpStatus.NOT_FOUND).body("Student data not updated");
 	}
 	
+	/* Request for removing a student object from the dB */
 	@DeleteMapping("/delete/{roll_no}")
 	public ResponseEntity<String> deleteStudent(@PathVariable String roll_no) {
 		String response = studentService.deleteStudent(roll_no);

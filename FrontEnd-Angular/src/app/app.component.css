@@ -4,12 +4,17 @@
 }
 
 .hero-1 {
-    padding: 10% 2%;
+    padding: 8% 2%;
     text-align: center;
 }
 
+.heading {
+    text-align: center;
+    margin-bottom: 3%;
+}
+
 .btn {
-    margin: 0 2%;
+    margin: 1% 2%;
     padding: 1.5% 3%;
 }
 

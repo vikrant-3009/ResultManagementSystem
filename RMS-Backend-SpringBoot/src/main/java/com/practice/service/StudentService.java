@@ -6,6 +6,12 @@ import org.springframework.data.domain.Pageable;
 import com.practice.dto.StudentDTO;
 import com.practice.entity.Student;
 
+/**
+ * 
+ * @author vikrantkatoch
+ * 
+ * Service Interface for Student related information
+ */
 public interface StudentService {
 	
 	public Page<Student> getAllStudents(Pageable paging);

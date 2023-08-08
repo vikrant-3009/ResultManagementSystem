@@ -16,6 +16,12 @@ import com.practice.dto.TeacherDTO;
 import com.practice.entity.Teacher;
 import com.practice.service.TeacherService;
 
+/**
+ * 
+ * @author vikrantkatoch
+ * 
+ * Controller for handling Teacher requests
+ */
 @RestController
 @RequestMapping("/api/teachers")
 @CrossOrigin("http://localhost:4200/")
@@ -24,12 +30,14 @@ public class TeacherController {
 	@Autowired
 	private TeacherService teacherService;
 	
+	/* Request for getting the list of teachers */
 	@GetMapping
 	public ResponseEntity<List<TeacherDTO>> getAllTeachers() {
 		List<TeacherDTO> teachers = teacherService.getAllTeachers();
 		return new ResponseEntity<>(teachers, HttpStatus.OK);
 	}
 	
+	/* Request for authenticating a teacher, from the provided teacher object */
 	@PostMapping("/authenticate")
 	public ResponseEntity<String> authenticateTeacher(@RequestBody Teacher teacher) {
 		boolean isCorrectCredentials = teacherService.authenticateTeacher(teacher);
